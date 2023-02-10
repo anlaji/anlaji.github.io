@@ -1,31 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>MyPorfolio</title>
+    <link rel="stylesheet" href="style.css" />
 
-    <title>Mi página de prueba</title>
+    <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
   </head>
+
   <body>
-    <h1>Conoce a Pocoyo</h1>
-    <img src="images/0993611e8381f2fdb4072b4eb24a0ad2-788633802.png" alt="Mi imagen de prueba" />
-	<p class="pocoyo">Aqui está <strong>Pocoyo</strong> junto a sus amigos.</p>
 
-  <button>Cambiar de usuario</button>
-<p>Pocoyó es un un niño en edad de preescolar que está descubriendo el mundo e interactuando con él. Le acompañan sus amigos, Pato, Elly, Nina (a partir de la cuarta temporada), Pajaroto y su mascota Loula. Cada capítulo es introducido y conducido por una voz en off. En la versión original española pone su voz José María del Río, en la versión inglesa, el encargado de presentar a los personajes en las primeras 2 temporadas es Stephen Fry, a partir de la tercera temporada el encargado es Stephen Hughes y para la versión brasileña, Ricardo Fabio es el encargado. En la versión para Hispanoamérica, el encargado actualmente es Ángel Mujica, aunque existen otros doblajes anteriores para las primeras temporadas, Orlando Arenas (Colombia) y Adal Ramones (México). </p>
+      
+  <div id='root' class="wrapper" mode="overview">
+	<header class='top-navigation'>
+	<div>
+				<label for="theme">Select theme: </label>
+				<select id="theme">
+				  <option value="light">Light</option>
+				  <option value="dark">Dark</option>
+				  <option value="purple">Purple</option>
+				  <option value="yellow">Yellow</option>
+				  <option value="psychedelic">Psychedelic</option>
+				</select>
+			</div>
+	<div class="container">
+		
+		<div class='top-navigation-wrap'>
+		  <img src="pruebassitio/icons/chat.png" alt="a simple chat logo"></img>		
+		</div>
+		
+		<div class='top-navigation-main'>
+			
+				
+		
+			<nav>
+				<ul>
+				<li>
+					<a href="./html/projects">Projects</a></li>
+				<li>
+				<a href="./html/about">About</a></li>
+				<li>
+				<a href="./html/contact">Contact</a></li>
+			  </ul>
+			</nav>
+			
+			<div class='search'>
+				<!-- A Search form is another common non-linear way to navigate through a website. -->
+				<form>
+					<input type="search" name="q" placeholder="Search query" />
+					<input type="submit" value="Go!" />
+				</form>
+			</div>
+		</div>
+	
+    </header>
+	<div class='main-wrapper'>
+		<main>
+			
+			  <div class='output'>
+			  <h2>Welcome</h2>
+			  <p>Welcome to a test porfolio site. If this were a real site, it would be the ideal place to come to learn more about web designing, whether you are a beginner looking to learn how to get into web applications, or an expert wanting to share ideas, tips, and photos with other like-minded people.</p>
 
-<p>Protagonistas</p>
+			  <p>So don't waste time! Get what you need, then turn off that computer and get out into the great outdoors!</p>
+			  
+			  <article>
+				
+				<ul>
+					<li><a href=".\cg-lab-project-2019-train-trip-master\cg-lab-project-2019-train-trip-master\code">Train Project</a></li>
+					<li><a href=".\pruebassitio">Test Project</a></li>
+					<li><a href=".\pruebassitio\silly-story-generator.html">Silly story generador</a></li>
+					<li><a href=".\pruebassitio\number-guessing-game-start.html">Number guessing game</a></li>
+					<li><a href=".\pruebassitio\index_pocoyo.html">Pocoyo Project (ES)</a></li>
+					<li><a href=".\pruebassitio\other.html">other game</a></li>
+				</ul>
+			</article>
+			</div>
+			<!-- the aside content can also be nested within the main content -->
+			
+		</main>
+	</div>
 
-<ul>
-  <li>Pocoyó: Es el protagonista y quien da nombre a la serie. Es un niño de 4 años de edad, con una curiosidad innata por el mundo que le rodea. </li>
-  <li>Pato: Es un pato amarillo de 5 años de edad. Es el mejor amigo de Pocoyó y lleva siempre un sombrero verde.</li>
-  <li>Elly: Es una elefante rosa de 5 años de edad, cuya personalidad afable contrasta con la de Pato. Elly es muy amiga de Pocoyó, y lo cuida como si fuera una hermana mayor.</li>
-  <li>Nina: Es una niña muy simpática y cariñosa que siempre va acompañada de su amigo el robot Roberto. Nina viene de otro planeta, viste de verde, vive entre las plantas y es un personaje muy risueño que ama la naturaleza.</li>
-  <li>El Narrador: Es quien presenta los títulos, hace preguntas a Pocoyo y amigos y ayuda a los personajes a comunicarse entre ellos. Habla durante todo el programa y, a menudo, se comunica directamente con los personajes.</li>
-</ul>
-<a href="https://www.pocoyo.com/dibujos-animados">Visita los dibujos animados.</a>
 
+		</div>
+		<!-- And here is our main footer that is used across all the pages of our website -->
 
-<script src="scripts/main.js"></script>
- </body>
+		<footer>
+			
+
+			<p>This fake website example is CC0 — any part of this code may be reused in any way you wish. Original example written by Chris Mills, 2016.</p>
+			<p>©Copyright 2023 by anlaji. All rights reversed.</p>
+		</footer>
+    <script src="my_index_script.js" defer></script>
+  </body>
 </html>
