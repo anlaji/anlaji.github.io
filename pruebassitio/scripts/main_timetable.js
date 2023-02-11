@@ -19,7 +19,7 @@ theme.onchange = function() {
   ( theme.value === 'dark' ) ? update('black','yellow') : update('#00539F','rgba(0,0,200,0.6)');
 }*/
 
-theme.onchange = function(){
+selectTheme.onchange = function(){
   let choice = theme.value;
 
   switch (choice) {

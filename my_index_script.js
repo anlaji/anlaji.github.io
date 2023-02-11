@@ -20,9 +20,9 @@ function update(bgColor, bodyBgColor, textColor, titleColor) {
 theme.onchange = function() {
   ( theme.value === 'dark' ) ? update('black','yellow') : update('#00539F','rgba(0,0,200,0.6)');
 }*/
-
-theme.onchange = function(){
-  let choice = theme.value;
+/*
+selectTheme.onchange = function(){
+  let choice = selectTheme.value;
 
   switch (choice) {
     case 'dark':
@@ -42,5 +42,4 @@ theme.onchange = function(){
       break;
   }
 
-}
-
+}*/

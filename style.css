@@ -3,19 +3,21 @@
 html, body {
   margin: 0;
   padding: 0;
+  height: 100vh;
+  overflow: hidden;
 }
 
 html {
-  font-size: 10px;  
+  font-size: 10px;
   font-family: sans-serif;
-  background-color: #00539F;
+  /*background-color: #00539F;*/
 }
 
 body {
-  width: 70%;
-  min-width: 800px;
-  margin: 0 auto;
-  background-color: #00539F;
+  background: rgb(106,106,158);
+background: linear-gradient(90deg, rgba(106,106,158,1) 0%, rgba(68,144,192,1) 0%, rgba(227,222,164,1) 100%);
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* || typography */
@@ -63,8 +65,8 @@ body > * {
   padding: 1%;
 }
 
-main, header, nav, article, aside, section {
-  background-color: #FF9500;
+main, header, nav, article, aside, section, iframe{
+/*  background-color: #FF9500;*/
   padding: 1%;
   display: block;
 }
@@ -143,7 +145,7 @@ nav a, nav span {
 
 .main-wrapper {
   margin: 0 auto;
-max-width: var(--max-width);
+  max-width: var(--max-width);
 }
 
 .site-search {
@@ -154,6 +156,8 @@ max-width: var(--max-width);
 
 main {
   display: flex;
+    overflow-y: auto;
+    max-height: 1000px;
 }
 
 article, section {
@@ -187,14 +191,23 @@ footer {
 .output li {
   display: block;
   float: left;
-  width: 25%;
   border: 5px solid #00539F;
   padding: 5px;
-  height: 40px;
   background-color: lightblue;
   color: #00539F;
 }
 
+ul li a{
+  display:inline-block;
+  width:100%;
+  height:100%;
+}
+
 .output * {
   box-sizing: border-box;
+}
+
+.icons_projects img {
+  max-width: 10px;
+  max-height: 15px;
 }
