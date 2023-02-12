@@ -150,11 +150,12 @@ ul li a{
   height:100%;
   margin-right:10px;
 }
+
 #myDIV {
   display: grid;
   gap: 10px;
   padding: 10px;
-  background-color: #2196F3;
+  background-color: #009999;
   grid-template: auto / auto auto auto;
 }
 #myDIV div {
