@@ -3,6 +3,8 @@
 html, body {
   margin: 0;
   padding: 0;
+  padding-right: 70px;
+  padding-left: 70px;
   height: 100vh;
 }
 
@@ -15,7 +17,28 @@ html {
 body {
   background: rgb(106,106,158);
   background: linear-gradient(90deg, rgba(106,106,158,1) 0%, rgba(68,144,192,1) 0%, rgba(227,222,164,1) 100%);
-  height: 100vh;font-family: 'Poppins', sans-serif;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+header {
+  margin-bottom: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  color: var(#ffffff);
+  overflow: hidden;
+  padding: 0 !important;
+  align-items: center;
+}
+
+main {
+  display: flex;
+}
+
+
+footer {
+  margin-top: 10px;
 }
 
 /* || typography */
@@ -49,18 +72,14 @@ p, li {
   font-size: 1.6rem;
   line-height: 1.5;
 }
+footer p{
+
+  text-align: center;
+}
 
 /* || header layout */
 
-header {
-  margin-bottom: 10px;
-  display: flex;
-  flex-flow: row wrap;
-  color: var(#ffffff);
-  overflow: hidden;
-  padding: 0 !important;
-  align-items: center;
-}
+
 
 body > * {
   background-color: transparent;
@@ -84,11 +103,6 @@ header img {
   padding-top: 20.15px;
 }
 /* || main layout */
-
-main {
-  display: flex;
-}
-
 article, section {
   flex: 4;
 }
@@ -112,9 +126,6 @@ aside img {
   max-width: 100%;
 }
 
-footer {
-  margin-top: 10px;
-}
 
 nav {
   flex: 100%;
@@ -222,4 +233,19 @@ ul li a{
 .icons_projects img {
   max-width: 10px;
   max-height: 15px;
+}
+input, textarea{
+  padding:0;
+}
+.submit-button, .reset-button {
+  display: inline-block;
+  width: 40%;
+  height: 3em;
+  font-size: 1.1rem;
+  background-color: #009999;
+  min-width: 300px;
+  border-radius: 30px;
+  border:none;
+  margin-left:20px;
+  color: #f3f3f3;
 }
