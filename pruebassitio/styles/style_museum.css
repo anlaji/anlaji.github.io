@@ -11,18 +11,35 @@ p, li {
 html {
   background-color: #00539F;
 }
-body {
-  width: 75%;
+.text-responsive {
+  font-size: calc(100% + 2vw + 2vh);
+}
+body{
+
+  background-image: url(https://th.bing.com/th/id/OIP.r09rE1J--s87N60A_dBargEyDM?pid=ImgDet&rs=1);
+  font-family: sans-serif;
+  padding: 20px;
+}
+.museum {
+  width: 80%;
+  background-image: url(https://image.freepik.com/free-photo/smooth-stone-texture_1194-6911.jpg);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  padding:20px;
+  max-width: auto;
+}
+p body {
+  width: auto;
   margin: 0 auto;
-  background-color: #FF9500;
   padding: 0 20px 20px 20px;
   border: 5px solid black;
 }
 h1 {
   margin: 0;
   padding: 20px 0;
-  color: #00539F;
   text-shadow: 3px 3px 1px black;
+  font-size: 120px;
 }
 img {
   display: block;

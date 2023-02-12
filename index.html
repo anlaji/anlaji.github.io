@@ -1,90 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en es de">
   <head>
     <meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>MyPorfolio</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="style_space.css" />
-
-    <!--[if lt IE 9]>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/style_space.css" />
   </head>
-
   <body>
+    <div id='root' class="wrapper" mode="overview">
+      	<header class='top-navigation section sec1 header active' >
+        	<div class="container">
+              <div class='top-navigation-wrap'>
+                <a href="/index.html">
+        		        <img src="images/home.png" alt="a simple chat logo"></img></a>
+        		 </div>
 
-  <div id='root' class="wrapper" mode="overview">
-	<header class='top-navigation'>
-	<div class="container">
+        		<div class='top-navigation-main'>
+        			<nav>
+          				<ul>
+            				<li>
+            					<a href="#projects">Projects</a></li>
+            				<li>
+            				<a href="#about">About</a></li>
+            				<li>
+            				<a href="#contact">Contact</a></li>
+          			  </ul>
+          		</nav>
+        			<div class='search'>
+        				<!-- A Search form is another common non-linear way to navigate through a website. -->
+        				<form>
+        					<input type="search" name="q" placeholder="Search query" />
+        					<input type="submit" value="Go!" />
+        				</form>
+        			</div>
+        		</div>
+          </div>
+        </header>
+    	<div class='main-wrapper'>
+    		<main>
+    			  <div class='output'>
+              <div id="welcome">
+        			  <h2>Welcome</h2>
+                <h1 class="name">
+                    Hi, I'm <span>Angela!</span>
+                    A Web Developer.
+                </h1>
+        			  <h2>I love to create beautiful and functional websites.</h2>
+                <div class="btn-con">
+                    <a href="" class="main-btn">
+                        <span class="btn-text">Download CV</span>
+                        <span class="btn-icon"><i class="fas fa-download"></i></span>
+                    </a>
+                </div>
+                <p>If this were a real site, it would be the ideal place to come to learn more about web designing, whether you are a beginner looking to learn how to get into web applications, or an expert wanting to share ideas, tips, and photos with other like-minded people.</p>
 
-		<div class='top-navigation-wrap'>
-		  <img src="images/home.png" alt="a simple chat logo"></img>
-		</div>
+        			  <p>So don't waste time! Get what you need, then turn off that computer and get out into the great outdoors!</p>
+              </div>
+              <div>
+                <div>
+          			  <article id='projects'>
+                    <h2>My projects</h2>
+              				<ul>
+                        <!--https://www.flaticon.com/free-icons/ -->
+              					<li><a href=".\cg-lab-project-2019-train-trip-master\cg-lab-project-2019-train-trip-master\code"><img class="icons_projects" src="images\rail.png"/></a></li>
+              					<li><a href=".\pruebassitio\british_museum.html"><img  class="icons_projects" src="images\museum.png"/></a></li>
+              					<li><a href=".\pruebassitio"><img class="icons_projects"  src="images\splash.png"/></a></li>
+              					<li><a href=".\freeCodeCamp\index_cafe_menu.html"><img  class="icons_projects" src="images\cafemenu.png"/></a></li>
+              					<li><a href=".\pruebassitio\silly-story-generator.html"><img  class="icons_projects" src="images\storytelling.png"/></a></li>
+              					<li><a href=".\pruebassitio\number-guessing-game-start.html"><img  class="icons_projects" src="images\charade.png"/></a></li>
+              					<li><a href=".\pruebassitio\index_pocoyo.html"><img  class="icons_projects" src="images\pocoyo.png"/></a></li>
+              					<li><a href=".\pruebassitio\chatExportScripts.html"><img  class="icons_projects" src="images\game.png"/></a></li>
+              					<li><a href=".\chatExportScripts\index.html"><img  class="icons_projects" src="images\signal.png"/></a></li>
+              				</ul>
+          			   </article>
+                 </div>
+                 <div>
+          			  <article id='about'>
 
-		<div class='top-navigation-main'>
+                      <h2>About me</h2>
+            			</article>
+                </div>
+                  <div>
+          			  <article id='contact'>
 
+                    <h2>Contact</h2>
+          			</article>
+              </div>
+    			</div>
+    			</div>
+    			<!-- the aside content can also be nested within the main content -->
 
-
-			<nav>
-				<ul>
-				<li>
-					<a href="./html/projects">Projects</a></li>
-				<li>
-				<a href="./html/about">About</a></li>
-				<li>
-				<a href="./html/contact">Contact</a></li>
-			  </ul>
-			</nav>
-
-			<div class='search'>
-				<!-- A Search form is another common non-linear way to navigate through a website. -->
-				<form>
-					<input type="search" name="q" placeholder="Search query" />
-					<input type="submit" value="Go!" />
-				</form>
-			</div>
-		</div>
-
-    </header>
-	<div class='main-wrapper'>
-		<main>
-
-			  <div class='output'>
-			  <h2>Welcome</h2>
-			  <p>Welcome to a test porfolio site. If this were a real site, it would be the ideal place to come to learn more about web designing, whether you are a beginner looking to learn how to get into web applications, or an expert wanting to share ideas, tips, and photos with other like-minded people.</p>
-
-			  <p>So don't waste time! Get what you need, then turn off that computer and get out into the great outdoors!</p>
-
-			  <article>
-
-          <h2>My projects</h2>
-				<ul>
-					<li><a href=".\cg-lab-project-2019-train-trip-master\cg-lab-project-2019-train-trip-master\code"><img class="icons_projects" src="images\rail.png"/></a></li>
-					<li><a href=".\pruebassitio"><img class="icons_projects"  src="images\splash.png"/></a></li>
-					<li><a href=".\pruebassitio\silly-story-generator.html"><img  class="icons_projects" src="images\storytelling.png"/></a></li>
-					<li><a href=".\pruebassitio\number-guessing-game-start.html"><img  class="icons_projects" src="images\charade.png"/></a></li>
-					<li><a href=".\pruebassitio\index_pocoyo.html"><img  class="icons_projects" src="images\pocoyo.png"/></a></li>
-					<li><a href=".\pruebassitio\other.html"><img  class="icons_projects" src="images\game.png"/></a></li>
-				</ul>
-			</article>
-			</div>
-			<!-- the aside content can also be nested within the main content -->
-
-		</main>
-	</div>
+    		</main>
+    	</div>
 
 
-		</div>
-		<!-- And here is our main footer that is used across all the pages of our website -->
+    		</div>
+    		<!-- And here is our main footer that is used across all the pages of our website -->
 
-		<footer>
+    		<footer>
 
 
-			<p>This fake website example is CC0 — any part of this code may be reused in any way you wish. Original example written by Chris Mills, 2016.</p>
-			<p>©Copyright 2023 by anlaji. All rights reversed.</p>
-		</footer>
-    <script src="my_index_script.js" defer></script>
-  </body>
+    			<p>This fake website example is CC0 — any part of this code may be reused in any way you wish. Original example written by Chris Mills, 2016.</p>
+    			<p>©Copyright 2023 by anlaji. All rights reversed.</p>
+    		</footer>
+        <script src="scripts/my_index_script.js" defer></script>
+      </body>
 </html>
