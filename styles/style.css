@@ -59,6 +59,7 @@ header {
   top:0;
   border-bottom: 4px solid #fdb347;
   z-index: 1;
+  height:50px;
 }
 .top-navigation-wrap{
   margin: -20px 0px 0px 120px;
@@ -261,6 +262,7 @@ ul li a{
   position: static;
   top: inherit;
   z-index: inherit;
+  max-height:50px;
 }
 
 .main-wrapper {
