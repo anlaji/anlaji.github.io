@@ -141,10 +141,10 @@ section {
   width: 80%;
 }
 .about-stats .progress-bars .progress-bar .progress-con .progress .css {
-  width: 95%;
+  width: 65%;
 }
 .about-stats .progress-bars .progress-bar .progress-con .progress .js {
-  width: 75%;
+  width: 45%;
 }
 .about-stats .progress-bars .progress-bar .progress-con .progress .react {
   width: 6%;

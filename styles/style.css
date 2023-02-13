@@ -1,10 +1,27 @@
 /* || General setup */
+/*Certain types of motion-based animations can cause discomfort for some users. In particular, people with vestibular disorders have sensitivity to certain motion triggers.
+
+The @media at-rule has a media feature called prefers-reduced-motion to set CSS based on the user's preferences. It can take one of the following values:
+
+    reduce
+    no-preference
+*/
+@media (prefers-reduced-motion: no-preference) {
+  * {
+  scroll-behavior: smooth;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+
+
+body > * {
+}
 
 html, body {
   margin: 0;
   padding: 0;
-  padding-right: 70px;
-  padding-left: 70px;
   height: 100vh;
 }
 
@@ -20,18 +37,37 @@ body {
   height: 100vh;
   margin: 0;
   font-family: 'Poppins', sans-serif;
-}
-
+}/*
+.header {
+  text-align: center;
+  text-transform: uppercase;
+  padding: 32px;
+  background-color: #2a2a35;
+  color: #fff;
+  border-bottom: 4px solid #fdb347;
+}*/
 header {
   margin-bottom: 10px;
   display: flex;
   flex-flow: row wrap;
-  color: var(#ffffff);
   overflow: hidden;
   padding: 0 !important;
   align-items: center;
+  position: fixed;
+  width: 100%;
+  background-color: #2a2a35;
+  top:0;
+  border-bottom: 4px solid #fdb347;
+  z-index: 1;
 }
-
+.top-navigation-wrap{
+  margin: -20px 0px 0px 120px;
+}
+.main-wrapper{
+  padding-top: 120px;
+  padding-right: 70px;
+  padding-left: 70px;
+}
 main {
   display: flex;
 }
@@ -56,16 +92,23 @@ p, input, li {
 h1 {
   font-size: 4rem;
   text-align: center;
-  text-shadow: 2px 2px 10px black;
+  text-shadow: 2px 2px 20px black;
 }
 
 h2 {
   font-size: 3rem;
+}
+.text-center {
   text-align: center;
+  margin: 0 auto;
+}
+.text-delimited{
+  max-width:50%;
 }
 
 h3 {
   font-size: 2.2rem;
+  text-align: center;
 }
 
 p, li {
@@ -75,15 +118,6 @@ p, li {
 footer p{
 
   text-align: center;
-}
-
-/* || header layout */
-
-
-
-body > * {
-  background-color: transparent;
-  padding: 1%;
 }
 
 main, header, nav, article, aside, section, iframe{
@@ -152,7 +186,7 @@ nav a, nav span {
   line-height: 1.7;
   text-transform: uppercase;
   text-decoration: none;
-  color: black;
+  color: #fff;
 }
 
 ul li a{
@@ -163,18 +197,39 @@ ul li a{
 }
 
 #myDIV {
-  display: grid;
+  /*display: grid;
   gap: 10px;
   padding: 10px;
   background-color: #009999;
-  grid-template: auto / auto auto auto;
+  grid-template: auto / auto auto auto;*/
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: 10px;
+  padding: 30px 0 30px 0;
+  background-color: #2a2a35;
 }
 #myDIV div {
   background-color: rgba(255, 255, 255, 0.8);
   text-align: center;
-  padding: 20px 0;
   font-size: 30px;
+  padding:30px;
 }
+#myDIV a{
+  width: 100%;
+  max-width: 350px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+
+
 :root {
   --sticky-header-height: var(--main-document-header-height);
 }
@@ -248,4 +303,17 @@ input, textarea{
   border:none;
   margin-left:20px;
   color: #f3f3f3;
+}
+
+
+footer,
+footer a {
+
+  background-color: #2a2a35;
+  border-top: 4px solid #fdb347;
+  text-align: center;
+  padding: 0.3em;
+}
+footer p{
+  color:#fff;
 }
