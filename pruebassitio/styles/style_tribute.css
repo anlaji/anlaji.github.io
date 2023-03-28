@@ -31,7 +31,7 @@ header{
   margin:10px;
   padding: 10px 5%;
   align-content: center;
-  display: flex;
+  display: grid;
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
