@@ -362,13 +362,19 @@ section {
   line-height: 2rem;
   padding-bottom: 1rem;
 }
+@media (max-width: 28.75em) {
+  .contact-content-con {
+    flex-direction: column;
+    text-align: center;
+  }
 
+}
 .contact-content-con {
   display: flex;
   flex-direction: row;
-flex-wrap: wrap;
-justify-content: center;
-align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   padding-top: 3.5rem;
   padding-right: 3.5rem;
 }
@@ -453,6 +459,8 @@ align-items: center;
 }
 .contact-content-con .right-contact .i-c-2 {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .contact-content-con .right-contact .i-c-2 :last-child {
   margin-left: 1.5rem;

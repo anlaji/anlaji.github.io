@@ -236,6 +236,20 @@ ul li a {
           color: var(--main-white);
     }
 
+    .code {
+      color: var(--main-gray);
+      transition: color 0.3s ease-out;
+    }
+
+    .project:hover .code {
+      color: #ff7f50;
+    }
+
+
+    .project-title {
+      font-size: 1.5rem;
+      padding: 2rem 0.5rem;
+    }
 :root {
   --main-white: #f0f0f0;
   --main-red: #be3144;
@@ -330,4 +344,17 @@ footer a {
 
 footer p {
     color: #fff;
+}
+
+
+@media (max-width: 28.75em) {
+  footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
 }
