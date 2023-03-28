@@ -205,11 +205,11 @@ ul li a {
 }
 
 #myDIV {
-    /*display: grid;
-  gap: 10px;
-  padding: 10px;
-  background-color: #009999;
-  grid-template: auto / auto auto auto;*/
+    display: grid;
+    gap: 10px;
+    padding: 10px;
+    background-color: #009999;
+    grid-template: auto / auto auto auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -221,6 +221,7 @@ ul li a {
     gap: 10px;
     padding: 30px 0 30px 0;
     background-color: #2a2a35;
+    text-align: center;
 }
 
     #myDIV div {
@@ -231,16 +232,15 @@ ul li a {
     }
 
     #myDIV a {
-        width: 100%;
-        max-width: 350px;
-        height: 300px;
-        object-fit: cover;
-        border-radius: 10px;
+          text-decoration: none;
+          color: var(--main-white);
     }
 
-
-
 :root {
+  --main-white: #f0f0f0;
+  --main-red: #be3144;
+  --main-blue: #45567d;
+  --main-gray: #303841;
     --sticky-header-height: var(--main-document-header-height);
 }
 
@@ -328,6 +328,6 @@ footer a {
     padding: 0.3em;
 }
 
-    footer p {
-        color: #fff;
-    }
+footer p {
+    color: #fff;
+}

@@ -1,3 +1,10 @@
+:root {
+  --main-white: #f0f0f0;
+  --main-red: #be3144;
+  --main-blue: #45567d;
+  --main-gray: #303841;
+}
+
 h1 {
   font-size: 60px;
   text-align: center;
@@ -84,4 +91,10 @@ li {
   right: 0;
   font-size: 1.1rem;
   color: #aaa;
+}
+
+
+.project-title {
+  font-size: 1.5rem;
+  padding: 2rem 0.5rem;
 }
