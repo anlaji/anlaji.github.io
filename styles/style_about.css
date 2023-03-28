@@ -365,7 +365,12 @@ section {
 
 .contact-content-con {
   display: flex;
+  flex-direction: row;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
   padding-top: 3.5rem;
+  padding-right: 3.5rem;
 }
 .contact-content-con .left-contact {
   flex: 2;
