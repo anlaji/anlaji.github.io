@@ -263,6 +263,7 @@ ul li a {
     background-color: var(--background-primary);
     display: flex;
     flex-flow: row wrap;
+    justify-content: space-between;
     gap: var(--gutter);
 }
 
@@ -280,6 +281,7 @@ ul li a {
     display: flex;
     flex: 1 1;
     flex-direction: row;
+    justify-content: space-between;
     gap: .5rem;
     left: inherit;
     padding: 0;
