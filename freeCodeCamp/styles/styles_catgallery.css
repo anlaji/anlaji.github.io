@@ -7,7 +7,28 @@ body {
   font-family: sans-serif;
   background: #f5f6f7;
 }
+h1 {
+  font-size: 40px;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
 
+h2 {
+  font-size: 30px;
+}
+
+.established {
+  font-style: italic;
+}
+
+h1, h2, p {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
 .header {
   text-align: center;
   text-transform: uppercase;
@@ -29,13 +50,14 @@ body {
   padding: 20px 10px;
 }
 
-.gallery img {
+.gallery img, object {
   width: 100%;
   max-width: 350px;
   height: 300px;
   object-fit: cover;
   border-radius: 10px;
 }
+
 
 .gallery::after {
   content: "";
