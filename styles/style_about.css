@@ -185,11 +185,16 @@ section {
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
-  align-items: center;
+  /*align-items: center;*/
 }
+div.timeline-item > p{
+  width:66%;
+}
+
 .timeline .timeline-item {
   position: relative;
   padding-left: 3rem;
+  margin-left:33%;
   border-left: 1px solid var(--color-grey-5);
 }
 .timeline .timeline-item .tl-icon {

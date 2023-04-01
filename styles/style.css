@@ -307,6 +307,7 @@ ul li a {
     padding: 5px;
     background-color: lightblue;
     color: #00539F;
+    margin-left:10px;
 }
 
 .output * {
@@ -316,6 +317,9 @@ ul li a {
 .icons_projects img {
     max-width: 10px;
     max-height: 15px;
+}
+.icons_technical{
+  width: 5%;
 }
 
 input, textarea {
