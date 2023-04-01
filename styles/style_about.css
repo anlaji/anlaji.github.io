@@ -385,6 +385,7 @@ div.timeline-item > p{
 }
 .contact-content-con .left-contact {
   flex: 2;
+  padding:50px;
 }
 .contact-content-con .left-contact h4 {
   margin-top: 1rem;
@@ -446,6 +447,12 @@ div.timeline-item > p{
   flex: 3;
   margin-left: 3rem;
   padding-top: 3.5rem;
+  width:fit-content;
+  text-align: center;
+}
+.contact-form{
+  width:fit-content;
+    display: inline-block;
 }
 .contact-content-con .right-contact .input-control {
   margin: 1.5rem 0;
