@@ -212,6 +212,7 @@ div.timeline-item > p{
 .timeline .timeline-item .tl-icon i {
   font-size: 1.3rem;
   background-color: var(--color-grey-5);
+  width: fit-content;
 }
 .timeline .timeline-item .tl-duration {
   padding: 0.2rem 0.6rem;
@@ -452,7 +453,7 @@ div.timeline-item > p{
 }
 .contact-form{
   width:fit-content;
-    display: inline-block;
+  display: inline-block;
 }
 .contact-content-con .right-contact .input-control {
   margin: 1.5rem 0;
@@ -466,14 +467,14 @@ div.timeline-item > p{
   outline: none;
   border: none;
   background-color: var(--color-grey-5);
-  width: 100vh;
+  width:fit-content;
   color: var(--color-white);
   resize: none;
 }
 .contact-content-con .right-contact .i-c-2 {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  /*align-items: center;
+  justify-content: space-between;*/
 }
 .contact-content-con .right-contact .i-c-2 :last-child {
   margin-left: 1.5rem;
@@ -510,6 +511,7 @@ display: flex;
   align-self: flex-start;
   align-items: center;
   overflow: hidden;
+  margin-left: 20px;
 }
 .main-btn .btn-text {
   padding: 0 2rem;
