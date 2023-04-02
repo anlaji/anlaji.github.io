@@ -9,12 +9,10 @@ function printSections(){
   sections_cnt.forEach(sect=> {
     const posSection = sect.offsetTop;
     const heightSection = sect.offsetHeight;
-
-    /*  console.log(pos + " " + section.offsetTop + " " + section.offsetHeight);*/
     if(pos >= posSection && pos < posSection + heightSection){
       sectBtn.forEach((btn) =>{
           if(sect.id === btn.getAttribute('data-id')){
-          console.log(btn.getAttribute('data-id'));
+              //console.log(btn.getAttribute('data-id'));
               let currentBtn = document.querySelectorAll('.active-btn');
               if(currentBtn.length !== 0){
                 currentBtn[0].className = currentBtn[0].className.replace('active-btn', '');
@@ -30,7 +28,6 @@ function PageTransitions(){
     //Button click active class
     for(let i = 0; i < sectBtn.length; i++){
         sectBtn[i].addEventListener('click', function(){
-          console.log("CLICK2");
             let currentBtn = document.querySelectorAll('.active-btn');
             currentBtn[0].className = currentBtn[0].className.replace('active-btn', '');
             this.className += ' active-btn';
@@ -39,7 +36,6 @@ function PageTransitions(){
 
     //Sections Active
     allSections.addEventListener('click', (e) =>{
-      console.log("CLICK");
         const id = e.target.dataset.id;
         if(id){
             //resmove selected from the other btns
