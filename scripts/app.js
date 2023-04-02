@@ -1,22 +1,36 @@
-const sections = document.querySelectorAll('.section');
+const sections = document.querySelectorAll('section');
 const sectBtns = document.querySelectorAll('.controls');
 const sectBtn = document.querySelectorAll('.control');
 const allSections = document.querySelector('.main-content');
 
+function printSections(){
+  const sections_cnt = document.querySelectorAll('.sect_controll');
+  const pos = $(document).scrollTop();
+  sections_cnt.forEach(sect=> {
+    const posSection = sect.offsetTop;
+    const heightSection = sect.offsetHeight;
 
-
-$(document).ready(function(){
-  $("#output").scrollspy({target: ".navbar"});
-  $("#controls").on("activate.bs.scrollspy", function(){
-    var x = $("a").text();
-    $("#demo").empty().html("You are currently viewing: " + x);
+    /*  console.log(pos + " " + section.offsetTop + " " + section.offsetHeight);*/
+    if(pos >= posSection && pos < posSection + heightSection){
+      sectBtn.forEach((btn) =>{
+          if(sect.id === btn.getAttribute('data-id')){
+          console.log(btn.getAttribute('data-id'));
+              let currentBtn = document.querySelectorAll('.active-btn');
+              if(currentBtn.length !== 0){
+                currentBtn[0].className = currentBtn[0].className.replace('active-btn', '');
+              }
+              btn.className += ' active-btn';
+          }
+      })
+    }
   })
-});
+}
 
 function PageTransitions(){
     //Button click active class
     for(let i = 0; i < sectBtn.length; i++){
         sectBtn[i].addEventListener('click', function(){
+          console.log("CLICK2");
             let currentBtn = document.querySelectorAll('.active-btn');
             currentBtn[0].className = currentBtn[0].className.replace('active-btn', '');
             this.className += ' active-btn';
@@ -25,6 +39,7 @@ function PageTransitions(){
 
     //Sections Active
     allSections.addEventListener('click', (e) =>{
+      console.log("CLICK");
         const id = e.target.dataset.id;
         if(id){
             //resmove selected from the other btns
@@ -41,54 +56,14 @@ function PageTransitions(){
             const element = document.getElementById(id);
             element.classList.add('active');
         }
-    })
-
-
+    });
 }
 
 PageTransitions();
 
+
+// and then make each element do something on scroll
+
 $(document).ready(function () {
-    $(document).on("scroll", onScroll);
-
-    //smoothscroll
-    $('a[href^="#"]').on('click', function (e) {
-        e.preventDefault();
-        $(document).off("scroll");
-
-        $('a').each(function () {
-            $(this).removeClass('active');
-        })
-        $(this).addClass('active');
-
-        var target = this.hash,
-            menu = target;
-        $target = $(target);
-        $('html, body').stop().animate({
-            'scrollTop': $target.offset().top+2
-        }, 500, 'swing', function () {
-            window.location.hash = target;
-            $(document).on("scroll", onScroll);
-        });
-    });
+    $(document).on("scroll", printSections);
 });
-
-function onScroll(event){
-    var scrollPos = $(document).scrollTop();
-    $('.main-title').each(function () {
-        var currLink = $(this);
-        var refElement = $(currLink.attr("h1"));
-        console.log(currLink);
-        console.log(refElement.position());
-          var x = $(".main-title").text();
-          console.log("hola" + x);
-          /*$("#demo").empty().html("You are currently viewing: " + x);*/
-        if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
-            $('#menu-center ul li a').removeClass("active");
-            currLink.addClass("active");
-        }
-        else{
-            currLink.removeClass("active");
-        }
-    });
-}
