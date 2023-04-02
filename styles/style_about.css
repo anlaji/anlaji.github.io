@@ -189,6 +189,8 @@ section {
 }
 div.timeline-item > p{
   width:66%;
+}div.timeline-item > p{
+  width:66%;
 }
 
 .timeline .timeline-item {
@@ -225,6 +227,7 @@ div.timeline-item > p{
 .tl-duration {
 
   background-color: var(--color-grey-2);
+  width: fit-content;
 }
 .timeline .timeline-item h5 {
   padding: 1rem 0;
@@ -237,7 +240,7 @@ div.timeline-item > p{
   font-weight: 500;
   font-size: 1.2rem;
 }
-.timeline .timeline-item p {
+.timeline .timeline-item p:first-child {
   color: var(--color-grey-4);
   width: fit-content;
 }
