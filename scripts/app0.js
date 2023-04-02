@@ -75,14 +75,11 @@ $(document).ready(function () {
 
 function onScroll(event){
     var scrollPos = $(document).scrollTop();
-    $('.main-title').each(function () {
+    $('.main-content a').each(function () {
         var currLink = $(this);
-        var refElement = $(currLink.attr("h1"));
+        var refElement = $(currLink.attr("root"));
         console.log(currLink);
         console.log(refElement.position());
-          var x = $(".main-title").text();
-          console.log("hola" + x);
-          /*$("#demo").empty().html("You are currently viewing: " + x);*/
         if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
             $('#menu-center ul li a').removeClass("active");
             currLink.addClass("active");

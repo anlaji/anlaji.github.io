@@ -26,25 +26,58 @@
 					</a>
 				</div>
 				<div class='top-navigation-main'>
-					<nav>
-						<ul>
+					<nav class="navbar bg-body-terniary px-3 mb-3">
+						<ul class="list-group">
 							<li>
-								<a href="#projects" accesskey="1">Projects</a>
+								<a class="list-group-item list-group-item-action" href="#projects" accesskey="1">Projects</a>
 							</li>
-							<li>
-								<a href="#about" accesskey="2">About</a>
+								<li>
+								<a class="list-group-item list-group-item-action" href="#about" accesskey="2">About</a>
 							</li>
-							<li>
-								<a href="#contact" accesskey="31">Contact</a>
+								<li>
+								<a class="list-group-item list-group-item-action" href="#contact" accesskey="31">Contact</a>
 							</li>
 						</ul>
 					</nav>
 				</div>
 			</div>
 		</header>
-		<div class='main-wrapper' data-bs-spy="scroll">
+				<div class="row">
+					<div class="col-4">
+						<div class="list-group controls" class="list-group" id="controls">
+							<a class="list-group-item list-group-item-action control active-btn" href="#home">
+								<div data-id="home">
+									<i class="fas fa-home"></i>
+								</div>
+							</a>
+							<a class="list-group-item list-group-item-action control" href="#projects">
+								<div data-id="projects">
+									<i class="fas fa-newspaper"></i>
+								</div>
+							</a>
+							<a class="list-group-item list-group-item-action control" href="#about">
+								<div data-id="about">
+									<i class="fas fa-user"></i>
+								</div>
+							</a>
+							<a class="list-group-item list-group-item-action control" href="#timeline">
+								<div data-id="timeline">
+									<i class="fas fa-briefcase"></i>
+								</div>
+
+							</a>
+							<a class="list-group-item list-group-item-action control" href="#contact">
+								<div data-id="contact">
+									<i class="fas fa-envelope-open">
+									</i>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+		<div class='main-wrapper col-8'>
 			<main>
-				<div class='output'>
+				<div class='output scrollspy-example'  data-bs-spy="scroll" data-bs-target="#controls" data-bs-smooth-scroll="true" tabindex="0">
 					<div id="welcome">
 						<h1 class="name">
 							Hi, I'm <span>Angela!</span></br>
@@ -211,7 +244,9 @@
 									</div>
 								</div>
 								<div class="timeline" id="timeline">
-									<h4 class="stat-title"><span>My</span> Timeline</h4>
+									<div>
+										<h4 class="stat-title"><span>My</span> Timeline</h4>
+									</div>
 									<div class="timeline-item">
 										<div class="tl-icon">
 											<i class="fas fa-briefcase"></i>
@@ -434,36 +469,37 @@
 		</footer>
 
 	</div>
-	<div class="controls">
-		<a href="#home">
+
+<!--	<div class="controls list-group" class="list-group" id="controls">
+		<a class="list-group-item list-group-item-action" href="#home">
 			<div class="control active-btn" data-id="home">
 				<i class="fas fa-home"></i>
 			</div>
 		</a>
-		<a href="#projects">
+		<a class="list-group-item list-group-item-action" href="#projects">
 			<div class="control" data-id="projects">
 				<i class="fas fa-newspaper"></i>
 			</div>
 		</a>
-		<a href="#about">
+		<a class="list-group-item list-group-item-action" href="#about">
 			<div class="control" data-id="about">
 				<i class="fas fa-user"></i>
 				<a href="#about"></a>
 			</div>
 		</a>
-		<a href="#timeline">
+		<a class="list-group-item list-group-item-action" href="#timeline">
 			<div class="control" data-id="timeline">
 				<i class="fas fa-briefcase"></i>
 			</div>
 
 		</a>
-		<a href="#contact">
+		<a class="list-group-item list-group-item-action" href="#contact">
 			<div class="control" data-id="contact">
 				<i class="fas fa-envelope-open">
 				</i><a href="#contact"></a>
 			</div>
 		</a>
-	</div>
+	</div>-->
 	<script src="scripts/app.js"></script>
 	<script src="scripts/my_index_script.js" defer></script>
 </body>
