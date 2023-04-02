@@ -239,6 +239,7 @@ div.timeline-item > p{
 }
 .timeline .timeline-item p {
   color: var(--color-grey-4);
+  width: fit-content;
 }
 
 .port-text {
