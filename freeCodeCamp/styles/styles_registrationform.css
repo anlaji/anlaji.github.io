@@ -7,17 +7,17 @@ body {
   font-family: Tahoma;
   font-size: 16px;
 }
-header{
-
-margin: 0 auto;
-text-align: center;
-}
-.logo{
-  padding:20px;
+header {
   margin: 0 auto;
   text-align: center;
 }
-h1, p {
+.logo {
+  padding: 20px;
+  margin: 0 auto;
+  text-align: center;
+}
+h1,
+p {
   margin: 1em auto;
   text-align: center;
 }
@@ -53,7 +53,8 @@ select {
   min-height: 2em;
 }
 
-input, textarea {
+input,
+textarea {
   background-color: #0a0a23;
   border: 1px solid #0a0a23;
   color: #ffffff;
@@ -65,7 +66,7 @@ input, textarea {
   vertical-align: middle;
 }
 
-input[type="submit"] {
+input[type='submit'] {
   display: block;
   width: 60%;
   margin: 1em auto;
@@ -76,10 +77,10 @@ input[type="submit"] {
   min-width: 300px;
 }
 
-input[type="file"] {
+input[type='file'] {
   padding: 1px 2px;
 }
 
-a{
-  color:#dfdfe2;
+a {
+  color: #dfdfe2;
 }

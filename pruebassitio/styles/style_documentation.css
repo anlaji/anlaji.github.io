@@ -1,13 +1,13 @@
 #navbar {
   position: fixed;
-min-width: 290px;
-top: 0px;
-left: 0px;
-width: 300px;
-height: 100%;
-border-right: solid;
+  min-width: 290px;
+  top: 0px;
+  left: 0px;
+  width: 300px;
+  height: 100%;
+  border-right: solid;
   border-right-color: currentcolor;
-border-color: rgba(0, 22, 22, 0.4);
+  border-color: rgba(0, 22, 22, 0.4);
 }
 #main-doc {
   position: absolute;
@@ -16,7 +16,8 @@ border-color: rgba(0, 22, 22, 0.4);
   margin-bottom: 110px;
 }
 
-html, body {
+html,
+body {
   color: #4d4e53;
   font-family: 'Open Sans', Arial, sans-serif;
   line-height: 1.5;
@@ -34,7 +35,7 @@ html, body {
   width: 50%;
   position: relative;
   top: 0px;
-  background-color:green;
+  background-color: green;
 }
 #navbar ul {
   height: 88%;
@@ -83,12 +84,10 @@ code {
   border-radius: 5px;
 }
 
-
 #main-doc h1 {
   text-align: left;
   margin: 0px;
 }
-
 
 @media screen and (max-width: 600px) {
   body {

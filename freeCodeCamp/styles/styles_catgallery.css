@@ -21,7 +21,9 @@ h2 {
   font-style: italic;
 }
 
-h1, h2, p {
+h1,
+h2,
+p {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -50,7 +52,8 @@ h1, h2, p {
   padding: 20px 10px;
 }
 
-.gallery img, object {
+.gallery img,
+object {
   width: 100%;
   max-width: 350px;
   height: 300px;
@@ -58,8 +61,7 @@ h1, h2, p {
   border-radius: 10px;
 }
 
-
 .gallery::after {
-  content: "";
+  content: '';
   width: 350px;
 }

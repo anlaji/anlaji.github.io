@@ -11,7 +11,7 @@ function update(bgColor, bodyBgColor, textColor, titleColor) {
   document.querySelector('nav').style.backgroundColor = bodyBgColor;
   document.querySelector('article').style.backgroundColor = bodyBgColor;
   document.querySelector('aside').style.backgroundColor = bodyBgColor;
- // document.querySelector('footer').style.backgroundColor = bodyBgColor;
+  // document.querySelector('footer').style.backgroundColor = bodyBgColor;
   //document.querySelector('section').style.backgroundColor = bodyBgColor;
   html.style.color = textColor;
   title.style.color = titleColor;

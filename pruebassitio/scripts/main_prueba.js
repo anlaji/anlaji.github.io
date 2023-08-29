@@ -15,15 +15,14 @@ if (helado === 'chocolate') {
   alert('Awwww, pero mi favorito es el de chocolate...');
 }
 
-function multiplica(num1,num2) {
+function multiplica(num1, num2) {
   let resultado = num1 * num2;
   return resultado;
 }
 
-
 alert(multiplica(20, 20));
 multiplica(0.5, 3);
 
-document.querySelector('html').onclick = function() {
-    alert('¡Ouch! ¡Deja de pincharme!');
-}
+document.querySelector('html').onclick = function () {
+  alert('¡Ouch! ¡Deja de pincharme!');
+};

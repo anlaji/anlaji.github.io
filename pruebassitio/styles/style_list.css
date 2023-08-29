@@ -106,19 +106,19 @@ img {
 }
 
 header {
-    margin-bottom: 10px;
-    display: flex;
-    flex-flow: row wrap;
-    overflow: hidden;
-    padding: 0 !important;
-    align-items: center;
-    position: fixed;
-    width: 100%;
-    background-color: #2a2a35;
-    top: 0;
-    border-bottom: 4px solid #fdb347;
-    z-index: 1;
-    height: 60px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  overflow: hidden;
+  padding: 0 !important;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  background-color: #2a2a35;
+  top: 0;
+  border-bottom: 4px solid #fdb347;
+  z-index: 1;
+  height: 60px;
 }
 /* Projects section */
 

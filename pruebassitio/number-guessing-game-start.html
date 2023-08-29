@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-us">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
 
-    <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <link href="styles/style.css" rel="stylesheet" type="text/css" />
     <title>Number guessing game</title>
 
     <style>
@@ -18,7 +18,7 @@
         margin: 0 auto;
       }
 
-      .form input[type="number"] {
+      .form input[type='number'] {
         width: 200px;
       }
 
@@ -31,35 +31,42 @@
 
   <body>
     <header>
-    <div id="logo">
-     <a href="/index.html">
-         <img class="logo logo_dark_bg" src="../images/home.png" alt="logo">
-     </a>
-   </div>
-  </header>
+      <div id="logo">
+        <a href="/index.html">
+          <img class="logo logo_dark_bg" src="../images/home.png" alt="logo" />
+        </a>
+      </div>
+    </header>
 
-  <div id="game">
-    <h1>Number guessing game</h1>
+    <div id="game">
+      <h1>Number guessing game</h1>
 
-    <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
+      <p>
+        We have selected a random number between 1 and 100. See if you can guess
+        it in 10 turns or fewer. We'll tell you if your guess was too high or
+        too low.
+      </p>
 
-    <div class="form">
-      <label for="guessField">Enter a guess: </label>
-      <input type="number" min="1" max="100" required id="guessField" class="guessField">
-      <input type="submit" value="Submit guess" class="guessSubmit">
+      <div class="form">
+        <label for="guessField">Enter a guess: </label>
+        <input
+          type="number"
+          min="1"
+          max="100"
+          required
+          id="guessField"
+          class="guessField"
+        />
+        <input type="submit" value="Submit guess" class="guessSubmit" />
+      </div>
+
+      <div class="resultParas">
+        <p class="guesses"></p>
+        <p class="lastResult"></p>
+        <p class="lowOrHi"></p>
+      </div>
     </div>
-
-    <div class="resultParas">
-      <p class="guesses">
-      </p>
-      <p class="lastResult">
-      </p>
-      <p class="lowOrHi">
-      </p>
-    </div>
-</div>
     <script>
-
       // Your JavaScript goes here
       let randomNumber = Math.floor(Math.random() * 100) + 1;
       const guesses = document.querySelector('.guesses');
@@ -91,9 +98,9 @@
         } else {
           lastResult.textContent = '¡Incorrecto!';
           lastResult.style.backgroundColor = 'red';
-          if(userGuess < randomNumber) {
+          if (userGuess < randomNumber) {
             lowOrHi.textContent = '¡El número es muy bajo!';
-          } else if(userGuess > randomNumber) {
+          } else if (userGuess > randomNumber) {
             lowOrHi.textContent = '¡El número es muy grande!';
           }
         }
@@ -104,7 +111,6 @@
       }
 
       guessSubmit.addEventListener('click', checkGuess);
-
 
       function setGameOver() {
         guessField.disabled = true;
@@ -118,7 +124,7 @@
         guessCount = 1;
 
         const resetParas = document.querySelectorAll('.resultParas p');
-        for (let i = 0 ; i < resetParas.length ; i++) {
+        for (let i = 0; i < resetParas.length; i++) {
           resetParas[i].textContent = '';
         }
 

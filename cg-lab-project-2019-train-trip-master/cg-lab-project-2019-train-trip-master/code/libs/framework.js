@@ -30,7 +30,8 @@ function loadResources(resources, callback) {
     return /.*\.(obj)$/.test(url);
   }
   return new Promise(function (resolve) {
-    var result = {}, toLoad = Object.keys(resources);
+    var result = {},
+      toLoad = Object.keys(resources);
 
     function allLoaded(key) {
       var i = toLoad.indexOf(key);
@@ -67,8 +68,7 @@ function loadResources(resources, callback) {
         image_1.onload = function () {
           return loaded(key, image_1);
         };
-      }
-      else if (isModelUrl(value)) {
+      } else if (isModelUrl(value)) {
         ajax(key, value, JSON.parse);
       } else if (isObjUrl(value)) {
         ajax(key, value, parseObjFile);
@@ -116,7 +116,7 @@ function createContext(width, height) {
   canvas.width = width || 400;
   canvas.height = height || 400;
   document.body.appendChild(canvas);
-  createHtmlText(canvas)
+  createHtmlText(canvas);
   return canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
 }
 
@@ -141,7 +141,12 @@ function createHtmlText(canvas) {
  * @returns {WebGLShader}
  */
 function createShader(gl, code, type) {
-  var gl_type = (typeof type === 'string') ? (type === 'vertex' ? gl.VERTEX_SHADER : gl.FRAGMENT_SHADER) : (type || gl.VERTEX_SHADER);
+  var gl_type =
+    typeof type === 'string'
+      ? type === 'vertex'
+        ? gl.VERTEX_SHADER
+        : gl.FRAGMENT_SHADER
+      : type || gl.VERTEX_SHADER;
   var shader = gl.createShader(gl_type);
   // Load the shader source
   gl.shaderSource(shader, code);
@@ -167,8 +172,18 @@ function createShader(gl, code, type) {
  */
 function createProgram(gl, vertex, fragment) {
   var program = gl.createProgram();
-  gl.attachShader(program, typeof vertex === 'string' ? createShader(gl, vertex, gl.VERTEX_SHADER) : vertex);
-  gl.attachShader(program, typeof fragment === 'string' ? createShader(gl, fragment, gl.FRAGMENT_SHADER) : fragment);
+  gl.attachShader(
+    program,
+    typeof vertex === 'string'
+      ? createShader(gl, vertex, gl.VERTEX_SHADER)
+      : vertex,
+  );
+  gl.attachShader(
+    program,
+    typeof fragment === 'string'
+      ? createShader(gl, fragment, gl.FRAGMENT_SHADER)
+      : fragment,
+  );
   gl.linkProgram(program);
   var linked = gl.getProgramParameter(program, gl.LINK_STATUS);
   if (!linked) {
@@ -187,8 +202,7 @@ function createProgram(gl, vertex, fragment) {
 function checkForWindowResize(gl) {
   var width = gl.canvas.clientWidth;
   var height = gl.canvas.clientHeight;
-  if (gl.canvas.width != width ||
-    gl.canvas.height != height) {
+  if (gl.canvas.width != width || gl.canvas.height != height) {
     gl.canvas.width = width;
     gl.canvas.height = height;
   }
@@ -210,7 +224,6 @@ function isValidUniformLocation(loc) {
   return typeof loc !== 'undefined' && loc instanceof WebGLUniformLocation;
 }
 
-
 /**
  * converts the given hex color, e.g., #FF00FF to an rgba tuple
  */
@@ -218,20 +231,20 @@ function hex2rgba(color) {
   color = parseInt(color.slice(1), 16);
   var r = (color & 0xff0000) >> 16;
   var g = (color & 0xff00) >> 8;
-  var b = (color & 0xff);
+  var b = color & 0xff;
   return {
-    r: r / 255.,
-    g: g / 255.,
-    b: b / 255.,
-    a: 1
-  }
+    r: r / 255,
+    g: g / 255,
+    b: b / 255,
+    a: 1,
+  };
 }
 
 var glm = (function () {
   var identity = mat4.create();
 
   function deg2rad(degrees) {
-    return degrees * Math.PI / 180;
+    return (degrees * Math.PI) / 180;
   }
 
   return {
@@ -266,10 +279,16 @@ var glm = (function () {
         r = mat4.rotateZ(r, r, deg2rad(transform.rotateZ));
       }
       if (transform.scale) {
-        r = mat4.scale(r, r, typeof transform.scale === 'number' ?  [transform.scale, transform.scale, transform.scale]: transform.scale);
+        r = mat4.scale(
+          r,
+          r,
+          typeof transform.scale === 'number'
+            ? [transform.scale, transform.scale, transform.scale]
+            : transform.scale,
+        );
       }
       return r;
-    }
+    },
   };
 })();
 
@@ -290,18 +309,18 @@ function makeSphere(radius, latitudeBands, longitudeBands) {
   var normalData = [];
   var textureCoordData = [];
   for (var latNumber = 0; latNumber <= latitudeBands; latNumber++) {
-    var theta = latNumber * Math.PI / latitudeBands;
+    var theta = (latNumber * Math.PI) / latitudeBands;
     var sinTheta = Math.sin(theta);
     var cosTheta = Math.cos(theta);
     for (var longNumber = 0; longNumber <= longitudeBands; longNumber++) {
-      var phi = longNumber * 2 * Math.PI / longitudeBands;
+      var phi = (longNumber * 2 * Math.PI) / longitudeBands;
       var sinPhi = Math.sin(phi);
       var cosPhi = Math.cos(phi);
       var x = cosPhi * sinTheta;
       var y = cosTheta;
       var z = sinPhi * sinTheta;
-      var u = 1 - (longNumber / longitudeBands);
-      var v = 1 - (latNumber / latitudeBands);
+      var u = 1 - longNumber / longitudeBands;
+      var v = 1 - latNumber / latitudeBands;
       normalData.push(x);
       normalData.push(y);
       normalData.push(z);
@@ -315,7 +334,7 @@ function makeSphere(radius, latitudeBands, longitudeBands) {
   var indexData = [];
   for (var latNumber = 0; latNumber < latitudeBands; latNumber++) {
     for (var longNumber = 0; longNumber < longitudeBands; longNumber++) {
-      var first = (latNumber * (longitudeBands + 1)) + longNumber;
+      var first = latNumber * (longitudeBands + 1) + longNumber;
       var second = first + longitudeBands + 1;
       indexData.push(first);
       indexData.push(second);
@@ -329,7 +348,7 @@ function makeSphere(radius, latitudeBands, longitudeBands) {
     position: vertexPositionData,
     normal: normalData,
     texture: textureCoordData,
-    index: indexData //1
+    index: indexData, //1
   };
 }
 
@@ -394,7 +413,10 @@ function parseObjFile(objectData) {
    exists in the hashindices object, its corresponding value is the index of
    that group and is appended to the unpacked indices array.
    */
-  var verts = [], vertNormals = [], textures = [], unpacked = {};
+  var verts = [],
+    vertNormals = [],
+    textures = [],
+    unpacked = {};
   // unpacking stuff
   unpacked.verts = [];
   unpacked.norms = [];
@@ -435,22 +457,21 @@ function parseObjFile(objectData) {
         ['16/92/11', '14/101/22', '1/69/1'];
       */
       var quad = false;
-      for (var j = 0, eleLen = elements.length; j < eleLen; j++){
-          // Triangulating quads
-          // quad: 'f v0/t0/vn0 v1/t1/vn1 v2/t2/vn2 v3/t3/vn3/'
-          // corresponding triangles:
-          //      'f v0/t0/vn0 v1/t1/vn1 v2/t2/vn2'
-          //      'f v2/t2/vn2 v3/t3/vn3 v0/t0/vn0'
-          if(j === 3 && !quad) {
-              // add v2/t2/vn2 in again before continuing to 3
-              j = 2;
-              quad = true;
-          }
-          if(elements[j] in unpacked.hashindices){
-              unpacked.indices.push(unpacked.hashindices[elements[j]]);
-          }
-          else{
-              /*
+      for (var j = 0, eleLen = elements.length; j < eleLen; j++) {
+        // Triangulating quads
+        // quad: 'f v0/t0/vn0 v1/t1/vn1 v2/t2/vn2 v3/t3/vn3/'
+        // corresponding triangles:
+        //      'f v0/t0/vn0 v1/t1/vn1 v2/t2/vn2'
+        //      'f v2/t2/vn2 v3/t3/vn3 v0/t0/vn0'
+        if (j === 3 && !quad) {
+          // add v2/t2/vn2 in again before continuing to 3
+          j = 2;
+          quad = true;
+        }
+        if (elements[j] in unpacked.hashindices) {
+          unpacked.indices.push(unpacked.hashindices[elements[j]]);
+        } else {
+          /*
               Each element of the face line array is a vertex which has its
               attributes delimited by a forward slash. This will separate
               each attribute into another array:
@@ -464,8 +485,8 @@ function parseObjFile(objectData) {
                Think of faces having Vertices which are comprised of the
                attributes location (v), texture (vt), and normal (vn).
                */
-              var vertex = elements[ j ].split( '/' );
-              /*
+          var vertex = elements[j].split('/');
+          /*
                The verts, textures, and vertNormals arrays each contain a
                flattend array of coordinates.
                Because it gets confusing by referring to vertex and then
@@ -480,29 +501,29 @@ function parseObjFile(objectData) {
                component: +0 is x, +1 is y, +2 is z.
                This same process is repeated for verts and textures.
                */
-              // vertex position
-              unpacked.verts.push(+verts[(vertex[0] - 1) * 3 + 0]);
-              unpacked.verts.push(+verts[(vertex[0] - 1) * 3 + 1]);
-              unpacked.verts.push(+verts[(vertex[0] - 1) * 3 + 2]);
-              // vertex textures
-              if (textures.length) {
-                unpacked.textures.push(+textures[(vertex[1] - 1) * 2 + 0]);
-                unpacked.textures.push(+textures[(vertex[1] - 1) * 2 + 1]);
-              }
-              // vertex normals
-              unpacked.norms.push(+vertNormals[(vertex[2] - 1) * 3 + 0]);
-              unpacked.norms.push(+vertNormals[(vertex[2] - 1) * 3 + 1]);
-              unpacked.norms.push(+vertNormals[(vertex[2] - 1) * 3 + 2]);
-              // add the newly created vertex to the list of indices
-              unpacked.hashindices[elements[j]] = unpacked.index;
-              unpacked.indices.push(unpacked.index);
-              // increment the counter
-              unpacked.index += 1;
+          // vertex position
+          unpacked.verts.push(+verts[(vertex[0] - 1) * 3 + 0]);
+          unpacked.verts.push(+verts[(vertex[0] - 1) * 3 + 1]);
+          unpacked.verts.push(+verts[(vertex[0] - 1) * 3 + 2]);
+          // vertex textures
+          if (textures.length) {
+            unpacked.textures.push(+textures[(vertex[1] - 1) * 2 + 0]);
+            unpacked.textures.push(+textures[(vertex[1] - 1) * 2 + 1]);
           }
-          if(j === 3 && quad) {
-              // add v0/t0/vn0 onto the second triangle
-              unpacked.indices.push( unpacked.hashindices[elements[0]]);
-          }
+          // vertex normals
+          unpacked.norms.push(+vertNormals[(vertex[2] - 1) * 3 + 0]);
+          unpacked.norms.push(+vertNormals[(vertex[2] - 1) * 3 + 1]);
+          unpacked.norms.push(+vertNormals[(vertex[2] - 1) * 3 + 2]);
+          // add the newly created vertex to the list of indices
+          unpacked.hashindices[elements[j]] = unpacked.index;
+          unpacked.indices.push(unpacked.index);
+          // increment the counter
+          unpacked.index += 1;
+        }
+        if (j === 3 && quad) {
+          // add v0/t0/vn0 onto the second triangle
+          unpacked.indices.push(unpacked.hashindices[elements[0]]);
+        }
       }
     }
   }
@@ -510,7 +531,7 @@ function parseObjFile(objectData) {
     position: unpacked.verts,
     normal: unpacked.norms.length === 0 ? null : unpacked.norms,
     texture: unpacked.textures.length === 0 ? null : unpacked.textures,
-    index: unpacked.indices.length === 0 ? null : unpacked.indices
+    index: unpacked.indices.length === 0 ? null : unpacked.indices,
   };
 }
 
@@ -524,10 +545,10 @@ function parseMtlFile(fileContent) {
   var MAP_KD_RE = /^map_Kd\s/;
   var WHITESPACE_RE = /\s+/;
 
-  const materials = { };
+  const materials = {};
   var material = null;
 
-  fileContent.split('\n').forEach(function(line) {
+  fileContent.split('\n').forEach(function (line) {
     line = line.trim();
     const elems = line.split(WHITESPACE_RE);
     elems.shift(); //skip marker
@@ -538,19 +559,39 @@ function parseMtlFile(fileContent) {
         specular: [0, 0, 0, 1],
         emission: [0, 0, 0, 1],
         shininess: 0.0,
-        texture: null
+        texture: null,
       };
       materials[elems[0]] = material;
     } else if (NS_RE.test(line)) {
       material.shininess = parseFloat(elems[0]);
     } else if (KA_RE.test(line)) {
-      material.ambient = [ parseFloat(elems[0]), parseFloat(elems[1]), parseFloat(elems[2]), 1];
+      material.ambient = [
+        parseFloat(elems[0]),
+        parseFloat(elems[1]),
+        parseFloat(elems[2]),
+        1,
+      ];
     } else if (KD_RE.test(line)) {
-      material.diffuse = [ parseFloat(elems[0]), parseFloat(elems[1]), parseFloat(elems[2]), 1];
+      material.diffuse = [
+        parseFloat(elems[0]),
+        parseFloat(elems[1]),
+        parseFloat(elems[2]),
+        1,
+      ];
     } else if (KS_RE.test(line)) {
-      material.specular = [ parseFloat(elems[0]), parseFloat(elems[1]), parseFloat(elems[2]), 1];
+      material.specular = [
+        parseFloat(elems[0]),
+        parseFloat(elems[1]),
+        parseFloat(elems[2]),
+        1,
+      ];
     } else if (KE_RE.test(line)) {
-      material.emission = [ parseFloat(elems[0]), parseFloat(elems[1]), parseFloat(elems[2]), 1];
+      material.emission = [
+        parseFloat(elems[0]),
+        parseFloat(elems[1]),
+        parseFloat(elems[2]),
+        1,
+      ];
     } else if (MAP_KD_RE.test(line)) {
       material.texture = elems[0];
     }
@@ -567,7 +608,20 @@ function parseMtlFile(fileContent) {
 function makeRect(width, height) {
   width = width || 1;
   height = height || 1;
-  var position = [-width, -height, 0, width, -height, 0, width, height, 0, -width, height, 0];
+  var position = [
+    -width,
+    -height,
+    0,
+    width,
+    -height,
+    0,
+    width,
+    height,
+    0,
+    -width,
+    height,
+    0,
+  ];
   var normal = [0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1];
   var texture = [0, 0 /**/, 1, 0 /**/, 1, 1 /**/, 0, 1];
   var index = [0, 1, 2, 2, 3, 0];
@@ -575,7 +629,7 @@ function makeRect(width, height) {
     position: position,
     normal: normal,
     texture: texture,
-    index: index
+    index: index,
   };
 }
 
@@ -622,7 +676,7 @@ class SGNode {
       this.children.splice(i, 1);
     }
     return i >= 0;
-  };
+  }
 
   /**
    * render method to render this scengraph
@@ -633,7 +687,7 @@ class SGNode {
     this.children.forEach(function (c) {
       return c.render(context);
     });
-  };
+  }
 }
 /**
  * a transformation node, i.e applied a transformation matrix to its successors
@@ -655,8 +709,7 @@ class TransformationSGNode extends SGNode {
     //set current world matrix by multiplying it
     if (previous === null) {
       context.sceneMatrix = mat4.clone(this.matrix);
-    }
-    else {
+    } else {
       context.sceneMatrix = mat4.multiply(mat4.create(), previous, this.matrix);
     }
     //render children
@@ -695,7 +748,7 @@ class ShaderSGNode extends SGNode {
       context.gl.useProgram(backup);
     }
   }
-};
+}
 
 /**
  * a utility node for setting a uniform in a shader
@@ -713,7 +766,7 @@ class SetUniformSGNode extends SGNode {
     const gl = context.gl,
       shader = context.shader;
     const that = this;
-    Object.keys(this.uniforms).forEach(function(key) {
+    Object.keys(this.uniforms).forEach(function (key) {
       const value = that.uniforms[key];
       const loc = gl.getUniformLocation(shader, key);
       if (typeof value === 'number') {
@@ -722,7 +775,7 @@ class SetUniformSGNode extends SGNode {
         gl.uniform1i(loc, value ? 1 : 0);
       } else if (Array.isArray(value)) {
         const l = value.length;
-        const f = gl['uniform'+l+'f']
+        const f = gl['uniform' + l + 'f'];
         f.apply(gl, [loc].concat(value));
       }
     });
@@ -735,29 +788,43 @@ class SetUniformSGNode extends SGNode {
     //render children
     super.render(context);
   }
-
 }
 
 class AdvancedTextureSGNode extends SGNode {
-  constructor(image, children ) {
-      super(children);
-      this.image = image;
-      this.textureunit = 0;
-      this.uniform = 'u_tex';
-      this.textureId = -1;
+  constructor(image, children) {
+    super(children);
+    this.image = image;
+    this.textureunit = 0;
+    this.uniform = 'u_tex';
+    this.textureId = -1;
   }
 
   init(gl) {
     this.textureId = gl.createTexture();
     gl.bindTexture(gl.TEXTURE_2D, this.textureId);
 
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, this.magFilter || gl.LINEAR);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, this.minFilter || gl.LINEAR);
+    gl.texParameteri(
+      gl.TEXTURE_2D,
+      gl.TEXTURE_MAG_FILTER,
+      this.magFilter || gl.LINEAR,
+    );
+    gl.texParameteri(
+      gl.TEXTURE_2D,
+      gl.TEXTURE_MIN_FILTER,
+      this.minFilter || gl.LINEAR,
+    );
 
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, this.wrapS || gl.REPEAT);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, this.wrapT || gl.REPEAT);
 
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, this.image);
+    gl.texImage2D(
+      gl.TEXTURE_2D,
+      0,
+      gl.RGBA,
+      gl.RGBA,
+      gl.UNSIGNED_BYTE,
+      this.image,
+    );
 
     gl.bindTexture(gl.TEXTURE_2D, null);
   }
@@ -767,7 +834,10 @@ class AdvancedTextureSGNode extends SGNode {
       this.init(context.gl);
     }
     //set additional shader parameters
-    gl.uniform1i(gl.getUniformLocation(context.shader, this.uniform), this.textureunit);
+    gl.uniform1i(
+      gl.getUniformLocation(context.shader, this.uniform),
+      this.textureunit,
+    );
 
     //activate and bind texture
     gl.activeTexture(gl.TEXTURE0 + this.textureunit);
@@ -791,23 +861,38 @@ class RenderSGNode extends SGNode {
     if (typeof renderer !== 'function') {
       //assume it is a model wrap it
       this.renderer = modelRenderer(renderer);
-    }
-    else {
+    } else {
       this.renderer = renderer;
     }
   }
 
   setTransformationUniforms(context) {
     //set matrix uniforms
-    const modelViewMatrix = mat4.multiply(mat4.create(), context.viewMatrix, context.sceneMatrix);
+    const modelViewMatrix = mat4.multiply(
+      mat4.create(),
+      context.viewMatrix,
+      context.sceneMatrix,
+    );
     const normalMatrix = mat3.normalFromMat4(mat3.create(), modelViewMatrix);
     const projectionMatrix = context.projectionMatrix;
 
     const gl = context.gl,
       shader = context.shader;
-    gl.uniformMatrix4fv(gl.getUniformLocation(shader, 'u_modelView'), false, modelViewMatrix);
-    gl.uniformMatrix3fv(gl.getUniformLocation(shader, 'u_normalMatrix'), false, normalMatrix);
-    gl.uniformMatrix4fv(gl.getUniformLocation(shader, 'u_projection'), false, projectionMatrix);
+    gl.uniformMatrix4fv(
+      gl.getUniformLocation(shader, 'u_modelView'),
+      false,
+      modelViewMatrix,
+    );
+    gl.uniformMatrix3fv(
+      gl.getUniformLocation(shader, 'u_normalMatrix'),
+      false,
+      normalMatrix,
+    );
+    gl.uniformMatrix4fv(
+      gl.getUniformLocation(shader, 'u_projection'),
+      false,
+      projectionMatrix,
+    );
   }
 
   render(context) {
@@ -834,21 +919,37 @@ function modelRenderer(model) {
   function init(gl) {
     position = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, position);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(model.position), gl.STATIC_DRAW);
+    gl.bufferData(
+      gl.ARRAY_BUFFER,
+      new Float32Array(model.position),
+      gl.STATIC_DRAW,
+    );
     if (model.texture) {
       texCoordBuffer = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, texCoordBuffer);
-      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(model.texture), gl.STATIC_DRAW);
+      gl.bufferData(
+        gl.ARRAY_BUFFER,
+        new Float32Array(model.texture),
+        gl.STATIC_DRAW,
+      );
     }
     if (model.normal) {
       normalBuffer = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, normalBuffer);
-      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(model.normal), gl.STATIC_DRAW);
+      gl.bufferData(
+        gl.ARRAY_BUFFER,
+        new Float32Array(model.normal),
+        gl.STATIC_DRAW,
+      );
     }
     if (model.index) {
       indexBuffer = gl.createBuffer();
       gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
-      gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(model.index), gl.STATIC_DRAW);
+      gl.bufferData(
+        gl.ELEMENT_ARRAY_BUFFER,
+        new Uint16Array(model.index),
+        gl.STATIC_DRAW,
+      );
     }
   }
 
@@ -883,8 +984,7 @@ function modelRenderer(model) {
     if (model.index) {
       gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
       gl.drawElements(gl.TRIANGLES, numItems, gl.UNSIGNED_SHORT, 0);
-    }
-    else {
+    } else {
       gl.drawArrays(gl.TRIANGLES, 0, numItems);
     }
   };
@@ -894,7 +994,6 @@ function modelRenderer(model) {
  * a material node represents one material including (ambient, diffuse, specular, emission, and shininess)
  */
 class MaterialSGNode extends SGNode {
-
   constructor(children) {
     super(children);
     this.ambient = [0.2, 0.2, 0.2, 1.0];
@@ -910,23 +1009,43 @@ class MaterialSGNode extends SGNode {
   setMaterialUniforms(context) {
     const gl = context.gl;
     //no materials in use
-    if (!context.shader || !isValidUniformLocation(gl.getUniformLocation(context.shader, this.uniform+'.ambient'))) {
+    if (
+      !context.shader ||
+      !isValidUniformLocation(
+        gl.getUniformLocation(context.shader, this.uniform + '.ambient'),
+      )
+    ) {
       return;
     }
-    gl.uniform4fv(gl.getUniformLocation(context.shader, this.uniform+'.ambient'), this.ambient);
-    gl.uniform4fv(gl.getUniformLocation(context.shader, this.uniform+'.diffuse'), this.diffuse);
-    gl.uniform4fv(gl.getUniformLocation(context.shader, this.uniform+'.specular'), this.specular);
-    gl.uniform4fv(gl.getUniformLocation(context.shader, this.uniform+'.emission'), this.emission);
-    gl.uniform1f(gl.getUniformLocation(context.shader, this.uniform+'.shininess'), this.shininess);
+    gl.uniform4fv(
+      gl.getUniformLocation(context.shader, this.uniform + '.ambient'),
+      this.ambient,
+    );
+    gl.uniform4fv(
+      gl.getUniformLocation(context.shader, this.uniform + '.diffuse'),
+      this.diffuse,
+    );
+    gl.uniform4fv(
+      gl.getUniformLocation(context.shader, this.uniform + '.specular'),
+      this.specular,
+    );
+    gl.uniform4fv(
+      gl.getUniformLocation(context.shader, this.uniform + '.emission'),
+      this.emission,
+    );
+    gl.uniform1f(
+      gl.getUniformLocation(context.shader, this.uniform + '.shininess'),
+      this.shininess,
+    );
   }
 
   render(context) {
     this.setMaterialUniforms(context);
 
     //just set the light with the precomputed world position
-    this.lights.forEach(function(l) {
+    this.lights.forEach(function (l) {
       l.setLight(context);
-    })
+    });
     //render children
     super.render(context);
   }
@@ -937,7 +1056,6 @@ class MaterialSGNode extends SGNode {
  * the light position will be transformed according to the current model view matrix
  */
 class LightSGNode extends TransformationSGNode {
-
   constructor(position, children) {
     super(null, children);
     this.position = position || [0, 0, 0];
@@ -953,28 +1071,60 @@ class LightSGNode extends TransformationSGNode {
   setLightUniforms(context) {
     const gl = context.gl;
     //no materials in use
-    if (!context.shader || !isValidUniformLocation(gl.getUniformLocation(context.shader, this.uniform+'.ambient'))) {
+    if (
+      !context.shader ||
+      !isValidUniformLocation(
+        gl.getUniformLocation(context.shader, this.uniform + '.ambient'),
+      )
+    ) {
       return;
     }
-    gl.uniform4fv(gl.getUniformLocation(context.shader, this.uniform+'.ambient'), this.ambient);
-    gl.uniform4fv(gl.getUniformLocation(context.shader, this.uniform+'.diffuse'), this.diffuse);
-    gl.uniform4fv(gl.getUniformLocation(context.shader, this.uniform+'.specular'), this.specular);
+    gl.uniform4fv(
+      gl.getUniformLocation(context.shader, this.uniform + '.ambient'),
+      this.ambient,
+    );
+    gl.uniform4fv(
+      gl.getUniformLocation(context.shader, this.uniform + '.diffuse'),
+      this.diffuse,
+    );
+    gl.uniform4fv(
+      gl.getUniformLocation(context.shader, this.uniform + '.specular'),
+      this.specular,
+    );
   }
 
   setLightPosition(context) {
     const gl = context.gl;
-    if (!context.shader || !isValidUniformLocation(gl.getUniformLocation(context.shader, this.uniform+'Pos'))) {
+    if (
+      !context.shader ||
+      !isValidUniformLocation(
+        gl.getUniformLocation(context.shader, this.uniform + 'Pos'),
+      )
+    ) {
       return;
     }
     const position = this._worldPosition || this.position;
-    gl.uniform3f(gl.getUniformLocation(context.shader, this.uniform+'Pos'), position[0], position[1], position[2]);
+    gl.uniform3f(
+      gl.getUniformLocation(context.shader, this.uniform + 'Pos'),
+      position[0],
+      position[1],
+      position[2],
+    );
   }
 
   computeLightPosition(context) {
     //transform with the current model view matrix
-    const modelViewMatrix = mat4.multiply(mat4.create(), context.viewMatrix, context.sceneMatrix);
+    const modelViewMatrix = mat4.multiply(
+      mat4.create(),
+      context.viewMatrix,
+      context.sceneMatrix,
+    );
     const original = this.position;
-    const position =  vec4.transformMat4(vec4.create(), vec4.fromValues(original[0], original[1],original[2], 1), modelViewMatrix);
+    const position = vec4.transformMat4(
+      vec4.create(),
+      vec4.fromValues(original[0], original[1], original[2], 1),
+      modelViewMatrix,
+    );
 
     this._worldPosition = position;
   }
@@ -992,7 +1142,11 @@ class LightSGNode extends TransformationSGNode {
     this.setLight(context);
 
     //since this a transformation node update the matrix according to my position
-    this.matrix = glm.translate(this.position[0], this.position[1], this.position[2]);
+    this.matrix = glm.translate(
+      this.position[0],
+      this.position[1],
+      this.position[2],
+    );
     //render children
     super.render(context);
   }
@@ -1007,14 +1161,20 @@ class LightSGNode extends TransformationSGNode {
 function createSGContext(gl, projectionMatrix) {
   if (!projectionMatrix) {
     //create a default projection matrix
-    projectionMatrix = mat4.perspective(mat4.create(), glm.deg2rad(30), gl.drawingBufferWidth / gl.drawingBufferHeight, 0.01, 100);
+    projectionMatrix = mat4.perspective(
+      mat4.create(),
+      glm.deg2rad(30),
+      gl.drawingBufferWidth / gl.drawingBufferHeight,
+      0.01,
+      100,
+    );
   }
   return {
     gl: gl,
     sceneMatrix: mat4.create(),
     viewMatrix: mat4.create(),
     projectionMatrix: projectionMatrix,
-    shader: null
+    shader: null,
   };
 }
 /**
@@ -1028,31 +1188,56 @@ var sg = {
     return new TransformationSGNode(matrix, [].slice.call(arguments).slice(1));
   },
   translate: function (x, y, z) {
-    return sg.transform.apply(sg, [glm.translate(x, y, z || 0)].concat([].slice.call(arguments).slice(3)));
+    return sg.transform.apply(
+      sg,
+      [glm.translate(x, y, z || 0)].concat([].slice.call(arguments).slice(3)),
+    );
   },
   scale: function (x, y, z) {
-    return sg.transform.apply(sg, [glm.scale(x, y, z)].concat([].slice.call(arguments).slice(3)));
+    return sg.transform.apply(
+      sg,
+      [glm.scale(x, y, z)].concat([].slice.call(arguments).slice(3)),
+    );
   },
   rotateX: function (degree) {
-    return sg.transform.apply(sg, [glm.rotateX(degree)].concat([].slice.call(arguments).slice(1)));
+    return sg.transform.apply(
+      sg,
+      [glm.rotateX(degree)].concat([].slice.call(arguments).slice(1)),
+    );
   },
   rotateY: function (degree) {
-    return sg.transform.apply(sg, [glm.rotateY(degree)].concat([].slice.call(arguments).slice(1)));
+    return sg.transform.apply(
+      sg,
+      [glm.rotateY(degree)].concat([].slice.call(arguments).slice(1)),
+    );
   },
   rotateZ: function (degree) {
-    return sg.transform.apply(sg, [glm.rotateZ(degree)].concat([].slice.call(arguments).slice(1)));
+    return sg.transform.apply(
+      sg,
+      [glm.rotateZ(degree)].concat([].slice.call(arguments).slice(1)),
+    );
   },
   draw: function (renderer) {
     return new RenderSGNode(renderer, [].slice.call(arguments).slice(1));
   },
   drawSphere: function (radius, latitudeBands, longitudeBands) {
-    return sg.draw.apply(sg, [makeSphere(radius || 2, latitudeBands || 30, longitudeBands || 30)].concat([].slice.call(arguments).slice(3)));
+    return sg.draw.apply(
+      sg,
+      [
+        makeSphere(radius || 2, latitudeBands || 30, longitudeBands || 30),
+      ].concat([].slice.call(arguments).slice(3)),
+    );
   },
   drawRect: function (width, height) {
-    return sg.draw.apply(sg, [makeRect(width || 1, height || 1)].concat([].slice.call(arguments).slice(2)));
+    return sg.draw.apply(
+      sg,
+      [makeRect(width || 1, height || 1)].concat(
+        [].slice.call(arguments).slice(2),
+      ),
+    );
   },
   shader: function (program) {
     return new ShaderSGNode(program, [].slice.call(arguments).slice(1));
   },
-  context: createSGContext
+  context: createSGContext,
 };

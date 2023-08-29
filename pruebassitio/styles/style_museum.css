@@ -3,19 +3,19 @@ h1 {
   text-align: center;
 }
 
-p, li {
+p,
+li {
   font-size: 16px;
   line-height: 2;
   letter-spacing: 1px;
 }
 html {
-  background-color: #00539F;
+  background-color: #00539f;
 }
 .text-responsive {
   font-size: calc(100% + 2vw + 2vh);
 }
-body{
-
+body {
   background-image: url(https://storage.googleapis.com/boom-ai-images/results/WdmtTpplcTmE1KmWw0eC/00008.jpg);
   font-family: sans-serif;
   padding: 20px;
@@ -26,7 +26,7 @@ body{
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
-  padding:20px;
+  padding: 20px;
   max-width: auto;
 }
 p body {
@@ -46,15 +46,15 @@ img {
   margin: 0 auto;
 }
 
-p.myquote{
+p.myquote {
   font-family: 'helvetica neue', helvetica, sans-serif;
   letter-spacing: 1px;
   text-transform: uppercase;
   text-align: center;
-  border: 2px solid rgba(0,0,200,0.6);
-  background: rgba(0,0,200,0.3);
-  color: rgba(0,0,200,0.6);
-  box-shadow: 1px 1px 2px rgba(0,0,200,0.4);
+  border: 2px solid rgba(0, 0, 200, 0.6);
+  background: rgba(0, 0, 200, 0.3);
+  color: rgba(0, 0, 200, 0.6);
+  box-shadow: 1px 1px 2px rgba(0, 0, 200, 0.4);
   border-radius: 10px;
   padding: 3px 10px;
   display: inline-block;

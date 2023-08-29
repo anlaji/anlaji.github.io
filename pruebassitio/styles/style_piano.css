@@ -2,7 +2,9 @@ html {
   box-sizing: border-box;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -36,7 +38,7 @@ html {
 
 .key.black--key::after {
   background-color: #1d1e22;
-  content: "";
+  content: '';
   position: absolute;
   left: -18px;
   width: 32px;
@@ -65,10 +67,8 @@ html {
 }
 
 @media (max-width: 1199px) and (min-width: 769px) {
-#piano{
-
+  #piano {
     width: 675px;
-
   }
 
   .keys {

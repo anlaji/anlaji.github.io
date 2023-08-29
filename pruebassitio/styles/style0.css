@@ -1,7 +1,6 @@
-
 h1 {
   font-size: 40px;
-  color:lightblue;
+  color: lightblue;
 }
 
 p {
@@ -11,10 +10,10 @@ p {
 }
 
 html {
-  background-color: #00539F;
+  background-color: #00539f;
 }
 iframe {
- width: 150vh;
- height: 80vh;
- text-align: center;
+  width: 150vh;
+  height: 80vh;
+  text-align: center;
 }
