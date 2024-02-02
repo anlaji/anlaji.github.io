@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "jquery": "3.5.0",
+    "jquery": "^3.5.0",
     "jQuery": "^1.7.4",
     "sass": "^1.58.0"
   },
