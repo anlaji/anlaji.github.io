@@ -1,2 +1,0 @@
-find: directory
-run: python -m http.server oo reload -b
